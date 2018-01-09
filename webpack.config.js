@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
 
 const PROD = (process.env.NODE_ENV === 'production');
 if (PROD) {
@@ -20,6 +21,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
+    new GitRevisionPlugin(),
   ].concat(PROD ? [
     // prod only plugins:
     new BabiliPlugin(),
