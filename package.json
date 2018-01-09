@@ -1,0 +1,10 @@
+{
+  "name": "project",
+  "version": "0.0.1",
+  "license": "UNLICENCED",
+  "private": true,
+  "scripts": {
+    "test": "echo",
+    "build": "echo"
+  }
+}
