@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  frontend:
+    image: frontend
+    ports:
+      - 80:8080
+    deploy:
+      update_config:
+        order: start-first
+        failure_action: rollback
+  backend:
+    image: backend
+    deploy:
+      update_config:
+        order: start-first
+        failure_action: rollback
