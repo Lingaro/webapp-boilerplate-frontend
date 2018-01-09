@@ -6,5 +6,8 @@
   "scripts": {
     "test": "echo",
     "build": "mkdir dist"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0"
   }
 }
