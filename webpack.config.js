@@ -35,7 +35,21 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: PROD ? undefined : {
+          // skip full typechecking in dev-server mode:
+          // this greatly improves reload times.
+          // typechecking is done in paraller via start:tsc
+          transpileOnly: true,
+          compilerOptions: {
+            skipLibCheck: true,
+            isolatedModules: true
+          }
+        },
+      },
       { test: /\.s?css$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
     ]
   },

@@ -8,7 +8,10 @@
     "build:lint": "tslint 'src/**/*.ts' 'src/**/*.tsx' --format stylish",
     "build:bundle": "cross-env NODE_ENV=production webpack",
     "clean": "rimraf dist",
-    "start": "webpack-dev-server --hot",
+    "start": "npm-run-all -p start:*",
+    "start:devserver": "webpack-dev-server --hot",
+    "start:tsc": "tsc --noEmit --watch --pretty",
+    "start:test": "jest --watch --notify",
     "test": "jest"
   },
   "devDependencies": {
