@@ -1,18 +1,31 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
 
+const PROD = (process.env.NODE_ENV === 'production');
+if (PROD) {
+  console.log("Production build");
+}
 const config = {
   entry: './src/index',
   output: {
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, "dist"),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].[hash:8].js'
   },
   plugins: [
+    // common plugins
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
-  ],
+  ].concat(PROD ? [
+    // prod only plugins:
+    new BabiliPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+  ] : [ /* dev only plugins: */ new webpack.NamedModulesPlugin()]),
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
