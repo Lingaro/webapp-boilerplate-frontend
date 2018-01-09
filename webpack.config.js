@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const PROD = (process.env.NODE_ENV === 'production');
 if (PROD) {
@@ -22,6 +23,7 @@ const config = {
   ].concat(PROD ? [
     // prod only plugins:
     new BabiliPlugin(),
+    new CompressionPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),

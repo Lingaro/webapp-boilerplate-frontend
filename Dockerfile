@@ -7,6 +7,8 @@ COPY . ./
 RUN yarn build
 EXPOSE 8080
 ENTRYPOINT [ "http-serve", \
+  "--gzip", \
+  "-d", "false", \ 
   "-P", "http://backend:8080/", \
   "-p", "8080",  \
   "./dist/" ]
