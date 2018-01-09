@@ -4,7 +4,9 @@
   "license": "UNLICENCED",
   "private": true,
   "scripts": {
-    "build": "webpack",
+    "build": "npm-run-all --parallel build:*",
+    "build:lint": "tslint 'src/**/*.ts' 'src/**/*.tsx' --format stylish",
+    "build:webpack": "webpack",
     "clean": "rimraf dist",
     "start": "webpack-dev-server --hot",
     "test": "jest"
@@ -15,9 +17,11 @@
     "jest": "^22.0.4",
     "node-sass": "^4.7.2",
     "rimraf": "^2.6.2",
+    "npm-run-all": "^4.1.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "ts-loader": "^3.2.0",
+    "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "2.9.7"
