@@ -10,11 +10,15 @@ if (PROD) {
   console.log("Production build");
 }
 const config = {
+  mode: PROD ? 'production' : 'development',
   entry: './src/index',
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: '/',
     filename: '[name].[hash:8].js'
+  },
+  performance: {
+    maxEntrypointSize: 512000
   },
   plugins: [
     // common plugins
