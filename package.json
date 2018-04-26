@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "npm-run-all clean --parallel build:*",
+    "build": "npm-run-all clean --parallel test build:*",
     "build:lint": "tslint 'src/**/*.ts' 'src/**/*.tsx' --format stylish",
     "build:bundle": "cross-env NODE_ENV=production webpack",
     "clean": "rimraf dist",

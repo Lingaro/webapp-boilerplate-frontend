@@ -1,5 +1,4 @@
 import "./app.scss";
-import { version } from "punycode";
 
 // Show versions of backend and frontend.
 // You can safely remove this
